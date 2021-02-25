@@ -15,9 +15,11 @@ sudo dscl . -passwd /Users/vncuser $1
 sudo createhomedir -c -u vncuser > /dev/null
 
 #Enable VNC
-launchctl load -w /System/Library/LaunchDaemons/ssh.plist
-sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users USERNAME -access -on -privs -all
-sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -activate
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart \
+-activate -configure -access -on \
+-clientopts -setvnclegacy -vnclegacy yes \
+-clientopts -setvncpw -vncpw mypasswd \
+-restart -agent -privs -all
 
 
 #VNC password - http://hints.macworld.com/article.php?story=20071103011608872
