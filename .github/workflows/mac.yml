@@ -1,4 +1,4 @@
-name: mac
+name: CI
 on: 
   workflow_dispatch:
 defaults:
